@@ -1,6 +1,8 @@
 # promptpay-qr-js
 Promptpay QR-Code Javascript Library
 
+### Dependency Library
+* https://github.com/davidshimjs/qrcodejs
+
 ### References
- * https://github.com/davidshimjs/qrcodejs
- * https://www.blognone.com/node/95133
+* https://www.blognone.com/node/95133
