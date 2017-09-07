@@ -12,3 +12,6 @@ h2 {
   padding: 10px;
   margin-bottom: 10px;
 }
+#qrcode {
+  margin: 15px auto;
+}
