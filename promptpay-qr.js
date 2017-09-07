@@ -1,4 +1,4 @@
-var PromptpayQR = {
+var PromptPayQR = {
 
   // https://gist.github.com/chitchcock/5112270
   // Modified from http://automationwiki.com/index.php?title=CRC-16-CCITT

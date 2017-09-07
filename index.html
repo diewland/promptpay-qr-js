@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Promptpay QR-Code Javascript Library</title>
+    <title>PromptPay QR-Code Javascript Library</title>
     <script src="./promptpay-qr.js"></script>
     <script src="./qrcode.min.js"></script>
     <link href="./app.css" media="all" rel="stylesheet" />
   </head>
   <body>
 
-    <h1>Promptpay QR Generator</h1>
+    <h1>PromptPay QR Generator</h1>
     <h2>JavaScript Library</h2>
 
     <input id='acc_id' type='number' placeholder='เบอร์โทรศัพท์ หรือ เลขบัตรปชช'><br>
@@ -31,7 +31,7 @@
       function render_qr(){
         var acc_id = document.getElementById('acc_id').value;
         var amount = document.getElementById('amount').value;
-        var txt = PromptpayQR.gen_text(acc_id, amount);
+        var txt = PromptPayQR.gen_text(acc_id, amount);
 
         qr_dom.innerHTML = "";
         if(txt){
