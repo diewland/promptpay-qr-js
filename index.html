@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Promptpay QR-Code Javascript Library</title>
+    <script src="./promptpay-qr.js"></script>
+    <script src="./qrcode.min.js"></script>
+    <link href="./app.css" media="all" rel="stylesheet" />
+  </head>
+  <body>
+
+    <h1>Promptpay QR Generator</h1>
+    <h2>JavaScript Library</h2>
+
+    <input id='acc_id' type='number' placeholder='เบอร์โทรศัพท์ หรือ เลขบัตรปชช'><br>
+    <input id='amount' type='number' placeholder='จำนวนเงิน (ไม่ระบุก็ได้)' min='1'>
+    Generate QR-Code by <a target='_blank' href='https://davidshimjs.github.io/qrcodejs/'>https://davidshimjs.github.io/qrcodejs</a>
+    <br>
+    <br>
+    <div id="qrcode"></div>
+
+    <script type="text/javascript">
+      
+      // get QR-dom
+      var qr_dom = document.getElementById('qrcode');
+
+      // render QR function
+      function render_qr(){
+        var acc_id = document.getElementById('acc_id').value;
+        var amount = document.getElementById('amount').value;
+        var txt = PromptpayQR.gen_text(acc_id, amount);
+
+        qr_dom.innerHTML = "";
+        if(txt){
+          new QRCode(qr_dom, txt);
+        }
+      }
+
+      // bind acc_id, amount
+      document.getElementById('acc_id').addEventListener('keyup', render_qr, true);
+      document.getElementById('amount').addEventListener('keyup', render_qr, true);
+
+    </script>
+
+  </body>
+</html>

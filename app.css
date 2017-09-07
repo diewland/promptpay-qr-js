@@ -1,0 +1,14 @@
+/* just decorate demo page */
+h1 {
+  margin-bottom: 0px;
+}
+h2 {
+  margin-top: 0px;
+  font-style: italic;
+}
+#acc_id, #amount {
+  width: 90%;
+  font-size: x-large;
+  padding: 10px;
+  margin-bottom: 10px;
+}
