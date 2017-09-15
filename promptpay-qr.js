@@ -72,6 +72,9 @@ var PromptPayQR = {
     if(!acc_id){ // acc_id not found
       return null;
     }
+    else if(acc_id.match(/^\d{15}$/)){ // truemoney e-wallet
+      pp_acc_id = '0315' + acc_id;
+    }
     else if(acc_id.match(/^\d{13}$/)){ // card-id
       pp_acc_id = '0213' + acc_id;
     }
