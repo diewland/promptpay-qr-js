@@ -90,7 +90,7 @@ var PromptPayQR = {
       pp_amount = '54' + ('00' + amount.length).slice(-2) + amount;
     }
     // build pp string
-    var pp_str = "00020101021229370016A000000677010111"
+    var pp_str = "00020101021129370016A000000677010111"
                   + pp_acc_id
                   + "5303764"
                   + pp_amount
