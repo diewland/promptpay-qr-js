@@ -13,8 +13,9 @@
     <h1>PromptPay QR Generator</h1>
     <h2>JavaScript Library</h2>
 
-    <input id='acc_id' type='number' placeholder='เบอร์โทรศัพท์ หรือ เลขบัตรปชช'><br>
+    <input id='acc_id' type='number' placeholder='เบอร์โทรศัพท์ หรือ เลขบัตรปชช' value='0812345678'><br>
     <input id='amount' type='number' placeholder='จำนวนเงิน (ไม่ระบุก็ได้)' min='1'><br>
+    <button id='btn_download'>Download</button>
     Generate QR-Code by <a target='_blank' href='https://davidshimjs.github.io/qrcodejs/'>https://davidshimjs.github.io/qrcodejs</a>
     <div id="qrcode"></div>
 
@@ -39,9 +40,28 @@
         }
       }
 
-      // bind acc_id, amount
+      // download function
+      function download() {
+        // get b64
+        let img = document.getElementsByTagName('img');
+        if (img.length < 1) return;
+        let b64 = img[0].src;
+        // download image
+        var link = document.createElement('a');
+        link.href = b64;
+        link.download = 'download.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // bind acc_id, amount, download
       document.getElementById('acc_id').addEventListener('keyup', render_qr, true);
       document.getElementById('amount').addEventListener('keyup', render_qr, true);
+      document.getElementById('btn_download').addEventListener('click', download);
+
+      // preview qr
+      render_qr();
 
     </script>
 

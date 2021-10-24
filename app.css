@@ -15,3 +15,9 @@ h2 {
 #qrcode {
   margin: 15px auto;
 }
+#btn_download {
+  width: 97%;
+  font-size: large;
+  padding: 10px;
+  margin-bottom: 10px;
+}
