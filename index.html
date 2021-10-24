@@ -68,11 +68,16 @@
 
       }
       function download() {
-        // get b64
-        let img = document.getElementsByTagName('img');
-        if (img.length < 1) return;
+        // find b64
+        let b64 = document.getElementsByTagName('img')[0].src;
+        if (!b64) b64 = document.getElementsByTagName('canvas')[0].toDataURL();
+        if (!b64) {
+          alert("Cannot find QR Image");
+          return;
+        }
+        // build blob
+        let blob = dataURItoBlob(b64);
         // download image
-        let blob = dataURItoBlob(img[0].src);
         saveAs(blob, "download.png");
       }
 
