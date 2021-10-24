@@ -7,6 +7,7 @@
     <script src="./promptpay-qr.js"></script>
     <script src="./qrcode.min.js"></script>
     <link href="./app.css" media="all" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
 
@@ -41,18 +42,38 @@
       }
 
       // download function
+      // https://stackoverflow.com/a/46406124/466693
+      function dataURItoBlob(dataURI) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+        var byteString = atob(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+        // write the bytes of the string to an ArrayBuffer
+        var ab = new ArrayBuffer(byteString.length);
+
+        // create a view into the buffer
+        var ia = new Uint8Array(ab);
+
+        // set the bytes of the buffer to the correct values
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        // write the ArrayBuffer to a blob, and you're done
+        var blob = new Blob([ab], {type: mimeString});
+        return blob;
+
+      }
       function download() {
         // get b64
         let img = document.getElementsByTagName('img');
         if (img.length < 1) return;
-        let b64 = img[0].src;
         // download image
-        var link = document.createElement('a');
-        link.href = b64;
-        link.download = 'download.png';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        let blob = dataURItoBlob(img[0].src);
+        saveAs(blob, "download.png");
       }
 
       // bind acc_id, amount, download
